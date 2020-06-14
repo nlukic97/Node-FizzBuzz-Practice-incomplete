@@ -33,6 +33,21 @@ app.get('/loop',
     res.send(a);
 });
 
+app.get('/fizzbuzz',
+  (req,res)=> {
+    var fizzbuzz = [];
+      for (var i = 1; i <= 100; i++){
+        if(i%3 == 0){
+          fizzbuzz.push('fizz');
+        } else if(i%5 == 0){
+          fizzbuzz.push('buzz')
+        } else {
+          fizzbuzz.push(i)
+        }
+    }
+    res.send(fizzbuzz);
+});
+
 
 app.listen(3000, 
   ()=> {
