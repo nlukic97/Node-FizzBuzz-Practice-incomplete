@@ -1,4 +1,5 @@
 var express = require('express');
+const path = require('path');
 
 var app = express();
 
@@ -7,20 +8,24 @@ app.get('/',
     res.send('Hello there');
 });
 
-app.get('/homepage',
-  (req,res)=> {
-    var user = {
-      name:'Nick',
-      lastname:'Lukic'
-    }
+// app.get('/homepage',
+//   (req,res)=> {
+//     var user = {
+//       name:'Nick',
+//       lastname:'Lukic'
+//     }
 
-    user.forEach(element => { //ovo mi ne radi. How to print something in express in the console
-      console.log(element)
-    });
+//     user.forEach(element => { //ovo mi ne radi. How to print something in express in the console
+//       console.log(element)
+//     });
     
-    res.send('Hello World!'); //ne mogu da odstampam u korisnickoj konzoli, samo u serverskoj
+//     res.send('Hello World!'); //ne mogu da odstampam u korisnickoj konzoli, samo u serverskoj
     
-});
+// });
+
+app.get('/homepage',(req,res)=>{
+  res.sendFile(path.join(__dirname,'homepage.html'))
+})
 
 app.get('/loop',
   (req,res)=> {
